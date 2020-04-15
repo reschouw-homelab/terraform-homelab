@@ -1,0 +1,6 @@
+# Vim artifacts
+*.swp
+*.swo
+
+# Terraform files
+.terraform/*
