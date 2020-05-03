@@ -7,6 +7,12 @@ data "vsphere_host" "esxi-1" {
   datacenter_id = data.vsphere_datacenter.dc.id
 }
 
-output "esxi-1-id" {
-  value = data.vsphere_host.esxi-1
+data "vsphere_host" "esxi-4" {
+  name = "esxi-4.dorwinia.com"
+  datacenter_id = data.vsphere_datacenter.dc.id
 }
+
+# Data call below used to grab host ID for imports
+#output "esxi-4-id" {
+#  value = data.vsphere_host.esxi-4
+#}
