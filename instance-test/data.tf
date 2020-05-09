@@ -16,3 +16,8 @@ data "vsphere_datastore" "esxi-4-local" {
   name = "esxi-4-local"
   datacenter_id = data.vsphere_datacenter.dc.id
 }
+
+data "vsphere_virtual_machine" "template" {
+  name          = "Ubuntu-16-04-Base-Image"
+  datacenter_id = data.vsphere_datacenter.dc.id
+}
