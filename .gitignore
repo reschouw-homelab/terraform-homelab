@@ -3,4 +3,9 @@
 *.swo
 
 # Terraform files
-.terraform/*
+*.terraform/*
+
+# Terraform Crash Logs
+crash.log
+
+
