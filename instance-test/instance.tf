@@ -41,7 +41,7 @@ resource "vsphere_virtual_machine" "instance" {
   }
   
   extra_config = {
-    "guestinfo.userdata" =  "${path.module}/cloud-init.cfg"
-    "guestinfo.userdata.encoding" = "gzip+base64"
+    "guestinfo.userdata" =  base64encode(file("${path.module}/cloud-init.cfg"))
+    "guestinfo.userdata.encoding" = "base64"
   }
 }
