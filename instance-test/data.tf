@@ -18,7 +18,6 @@ data "vsphere_datastore" "esxi-4-local" {
 }
 
 data "vsphere_virtual_machine" "template" {
-  name          = "ubuntu-18-04-20200618230631"
-  #name          = "terraform-test-template"
+  name          = "ubuntu-18-04-20200620203619"
   datacenter_id = data.vsphere_datacenter.dc.id
 }

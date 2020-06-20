@@ -20,28 +20,10 @@ resource "vsphere_virtual_machine" "instance" {
 
   clone {
     template_uuid = data.vsphere_virtual_machine.template.id
-    
-    #customize {
-    #  linux_options {
-    #    host_name = "terraform-test"
-    #    domain = "dorwinia.com"
-    #  }
-    #  
-    #  network_interface {
-    #    ipv4_address = "192.168.1.223"
-    #    ipv4_netmask = 24
-    #  }
-    #  
-    #  ipv4_gateway = "192.168.1.1"
-    #  dns_server_list = [
-    #    "192.168.1.11",
-    #    "192.168.1.12",
-    #  ]
-    #} 
   }
   
   extra_config = {
-    "guestinfo.userdata" =  base64encode(file("${path.module}/cloud-init.cfg"))
+    "guestinfo.userdata" =  base64encode(templatefile("${path.module}/cloud-init.cfg",{ssh_key = file("${path.module}/secrets/gitlab-deploy")}))
     "guestinfo.userdata.encoding" = "base64"
   }
 }
