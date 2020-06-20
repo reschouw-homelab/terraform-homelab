@@ -9,4 +9,6 @@
 # Terraform Crash Logs
 crash.log
 
-
+# Secrets directories
+# TODO: Use an actual secrets service to keep secrets out of git
+secrets/*
