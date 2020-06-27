@@ -17,6 +17,7 @@ variable "memory" {
 
 variable "disk-size" {
   # In Gigabytes
+  # Minimum 8 Gigs
   default = 8
 }
 
