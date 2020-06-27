@@ -1,5 +1,5 @@
 resource "vsphere_virtual_machine" "instance" {
-  name             = "terraform-test"
+  name             = var.hostname
   wait_for_guest_net_timeout = 0
   resource_pool_id = data.vsphere_resource_pool.default-pool.id
   datastore_id = data.vsphere_datastore.esxi-4-local.id
