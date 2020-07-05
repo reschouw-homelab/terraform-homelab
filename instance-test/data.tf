@@ -12,12 +12,12 @@ data "vsphere_network" "vm-net" {
   datacenter_id = data.vsphere_datacenter.dc.id
 }
 
-data "vsphere_datastore" "esxi-4-local" {
-  name = "esxi-4-local"
+data "vsphere_datastore" "esxi-1-local" {
+  name = "esxi-1-local"
   datacenter_id = data.vsphere_datacenter.dc.id
 }
 
 data "vsphere_virtual_machine" "template" {
-  name          = "ubuntu-18-04-20200620203619"
+  name          = "ubuntu-18-04-20200705223153"
   datacenter_id = data.vsphere_datacenter.dc.id
 }

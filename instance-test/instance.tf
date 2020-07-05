@@ -2,7 +2,7 @@ resource "vsphere_virtual_machine" "instance" {
   name             = var.hostname
   wait_for_guest_net_timeout = 0
   resource_pool_id = data.vsphere_resource_pool.default-pool.id
-  datastore_id = data.vsphere_datastore.esxi-4-local.id
+  datastore_id = data.vsphere_datastore.esxi-1-local.id
   num_cpus = var.num-cpus
   memory   = var.memory
   guest_id = "ubuntu64Guest"
@@ -23,7 +23,9 @@ resource "vsphere_virtual_machine" "instance" {
   }
   
   extra_config = {
-    "guestinfo.userdata" =  base64encode(templatefile("${path.module}/cloud-init.cfg",{hostname = var.hostname, playbook = var.playbook}))
+    "guestinfo.userdata" =  base64encode(templatefile("${path.module}/userdata.cfg",{hostname = var.hostname, playbook = var.playbook, domain = var.domain}))
     "guestinfo.userdata.encoding" = "base64"
+    "guestinfo.metadata" =  base64encode(templatefile("${path.module}/metadata.cfg",{address = var.address, domain = var.domain, gateway = var.gateway, dns-servers = var.dns-servers}))
+    "guestinfo.metadata.encoding" = "base64"
   }
 }
