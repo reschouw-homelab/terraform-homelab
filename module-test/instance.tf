@@ -8,7 +8,7 @@ module "module-test-1" {
   num-cpus = 2
   memory = 2048
   disk-size = 8
-  template = "ubuntu-18-04-20200705223153"
+  template = "ubuntu-18-04-20200709140801"
 }
 
 module "module-test-2" {
@@ -21,5 +21,5 @@ module "module-test-2" {
   num-cpus = 2
   memory = 2048
   disk-size = 8
-  template = "ubuntu-18-04-20200705223153"
+  template = "ubuntu-18-04-20200709140801"
 }
