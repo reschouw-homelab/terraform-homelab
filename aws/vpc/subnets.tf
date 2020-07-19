@@ -6,5 +6,29 @@ resource "aws_subnet" "us-west-2" {
 
   tags = {
     Name = "us-west-2${each.key}"
+    "kubernetes.io/cluster/homelab-cluster" = "shared"
   }
+}
+
+resource "aws_route_table" "subnets" {
+  for_each = var.az-map
+
+  vpc_id = aws_vpc.main.id
+  
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.igw.id
+  }
+
+  tags = {
+    Name = "us-west-2${each.key}"
+    terraform = true
+  }
+}
+
+resource "aws_route_table_association" "subnets" {
+  for_each = var.az-map
+  
+  subnet_id = aws_subnet.us-west-2[each.key].id
+  route_table_id = aws_route_table.subnets[each.key].id
 }
