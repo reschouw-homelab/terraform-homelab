@@ -15,6 +15,9 @@ resource "aws_route_table" "subnets" {
 
   vpc_id = aws_vpc.main.id
   
+  # Note that the default route to the connected subnet is included automagically,
+  # so does not need to be specified here.
+
   route {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.igw.id
