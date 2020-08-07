@@ -12,7 +12,7 @@ module "dhcp-1" {
   template = "ubuntu-18-04-20200709140801"
 }
 
-module "dns-2" {
+module "dhcp-2" {
   source = "../modules/vsphere-instance"
 
   hostname = "dhcp-2"
