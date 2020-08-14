@@ -1,5 +1,5 @@
 module "dns-3" {
-  source = "../modules/vsphere-instance"
+  source = "git@git.dorwinia.com:homelab/terraform-homelab.git//vsphere/modules/vsphere-instance?ref=vsphere-instance-v1.0"
 
   hostname = "dns-3"
   playbook = "dns_config.yml"

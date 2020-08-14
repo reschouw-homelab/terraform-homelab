@@ -1,5 +1,5 @@
 module "config" {
-  source = "../modules/vsphere-instance"
+  source = "git@git.dorwinia.com:homelab/terraform-homelab.git//vsphere/modules/vsphere-instance?ref=vsphere-instance-v1.0"
 
   hostname = "config"
   playbook = "common.yml"

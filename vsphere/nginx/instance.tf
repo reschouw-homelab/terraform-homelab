@@ -1,5 +1,5 @@
 module "nginx" {
-  source = "../modules/vsphere-instance"
+  source = "git@git.dorwinia.com:homelab/terraform-homelab.git//vsphere/modules/vsphere-instance?ref=vsphere-instance-v1.0"
 
   hostname = "nginx"
   playbook = "nginx_config.yml"

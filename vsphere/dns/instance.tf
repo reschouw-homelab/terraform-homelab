@@ -1,5 +1,5 @@
 module "dns-1" {
-  source = "../modules/vsphere-instance"
+  source = "git@git.dorwinia.com:homelab/terraform-homelab.git//vsphere/modules/vsphere-instance?ref=vsphere-instance-v1.0"
 
   hostname = "dns-1"
   playbook = "dns_update.yml"
@@ -13,7 +13,7 @@ module "dns-1" {
 }
 
 module "dns-2" {
-  source = "../modules/vsphere-instance"
+  source = "git@git.dorwinia.com:homelab/terraform-homelab.git//vsphere/modules/vsphere-instance?ref=vsphere-instance-v1.0"
 
   hostname = "dns-2"
   playbook = "dns_update.yml"

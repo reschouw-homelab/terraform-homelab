@@ -1,5 +1,5 @@
 module "dhcp-1" {
-  source = "../modules/vsphere-instance"
+  source = "git@git.dorwinia.com:homelab/terraform-homelab.git//vsphere/modules/vsphere-instance?ref=vsphere-instance-v1.0"
 
   hostname = "dhcp-1"
   playbook = "dhcp_config.yml"
@@ -13,7 +13,7 @@ module "dhcp-1" {
 }
 
 module "dhcp-2" {
-  source = "../modules/vsphere-instance"
+  source = "git@git.dorwinia.com:homelab/terraform-homelab.git//vsphere/modules/vsphere-instance?ref=vsphere-instance-v1.0"
 
   hostname = "dhcp-2"
   playbook = "dhcp_config.yml"
