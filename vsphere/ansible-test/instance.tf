@@ -1,6 +1,6 @@
 module "test-instances" {
   count = 2
-  source = "../modules/vsphere-instance"
+  source = "git@git.dorwinia.com:homelab/terraform-homelab.git//vsphere/modules/vsphere-instance?ref=v1"
 
   hostname = "ans-${count.index+1}"
   playbook = "common.yml"
