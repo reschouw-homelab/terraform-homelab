@@ -1,3 +1,7 @@
+#
+# Hostname Configuration: --------------------------------------------------------
+#
+
 variable "hostname" {
   description = "Hostname to be applied to server"
   type = string
@@ -9,10 +13,10 @@ variable "domain" {
   default = "dorwinia.com"
 }
 
-variable "ip-address" {
-  description = "Static IP to be applied to server"
-  type = string
-}
+
+#
+# Instance Size Configuration: ----------------------------------------------------------
+#
 
 variable "instance-type" {
   description = "Type of instance to create"
@@ -26,14 +30,41 @@ variable "disk-size" {
   default = 8
 }
 
+variable "ami-name" {
+  description = "Name of ami to be used as base image. Grabs most recent ami. Supports regex."
+  type = string
+  default = "ubuntu-18-04-*"
+}
+
+#
+# Networking Configuration: -------------------------------------------------------------
+#
+
+variable "ip-address" {
+  description = "Static IP to be applied to server"
+  type = string
+}
+
+variable "associate-public-ip" {
+  description = "Whether or not to associate a public ip address with the instance"
+  type = bool
+  default = false
+}
+
+variable "custom-security-group-ids" {
+  description = "List of custom security groups to be added to the instance."
+  # See "security-groups" local value to determine what gets used here
+  type = list(string)
+  default = []
+}
+
+#
+# Ansible auto-run Configuration: -------------------------------------------------------
+#
+
 variable "playbook" {
   description = "Name of the Ansible playbook to be run against the machine on first boot (don't forget the .yml)"
   type = string
   default = "common.yml"
 }
 
-variable "ami-name" {
-  description = "Name of ami to be used as base image. Grabs most recent ami. Supports regex."
-  type = string
-  default = "ubuntu-18-04-*"
-}
