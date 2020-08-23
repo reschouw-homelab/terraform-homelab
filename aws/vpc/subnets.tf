@@ -8,7 +8,6 @@ resource "aws_subnet" "us-west-2" {
 
   tags = {
     Name = "us-west-2${each.key}"
-    "kubernetes.io/cluster/homelab-cluster" = "shared"
   }
 }
 

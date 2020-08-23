@@ -8,5 +8,7 @@ resource "aws_route53_zone" "dorwinia-private" {
 
   tags = {
     terraform = true
+    type = "private"
+    Name = "dorwinia.com"
   }
 }

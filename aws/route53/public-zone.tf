@@ -4,5 +4,7 @@ resource "aws_route53_zone" "dorwinia-public" {
   
   tags = {
     terraform = true
+    type = "public"
+    Name = "dorwinia.com"
   }
 }
