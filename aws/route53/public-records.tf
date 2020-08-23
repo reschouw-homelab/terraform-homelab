@@ -1,5 +1,5 @@
 # Base website --------------------------------------------
-resource aws_route53_record "root-website" {
+resource "aws_route53_record" "root-website" {
   zone_id = aws_route53_zone.dorwinia-public.id
   name = "dorwinia.com"
   type = "A"
@@ -11,7 +11,7 @@ resource aws_route53_record "root-website" {
 }
 
 # Publicly reachable sites: --------------------------------
-resource aws_route53_record "public-sites" {
+resource "aws_route53_record" "public-sites" {
   for_each = var.public-sites
   
   zone_id = aws_route53_zone.dorwinia-public.id
@@ -25,7 +25,7 @@ resource aws_route53_record "public-sites" {
 }
 
 # Zoho Mail Servers -----------------------------------------
-resource aws_route53_record "zoho-mail" {
+resource "aws_route53_record" "zoho-mail" {
   zone_id = aws_route53_zone.dorwinia-public.id
   name = "dorwinia.com"
   type = "MX"
@@ -38,7 +38,7 @@ resource aws_route53_record "zoho-mail" {
   ]
 }
 
-resource aws_route53_record "zoho-spf" {
+resource "aws_route53_record" "zoho-spf" {
   zone_id = aws_route53_zone.dorwinia-public.id
   name = "dorwinia.com"
   type = "TXT"
@@ -49,7 +49,7 @@ resource aws_route53_record "zoho-spf" {
   ]
 }
 
-resource aws_route53_record "zoho-dkim" {
+resource "aws_route53_record" "zoho-dkim" {
   zone_id = aws_route53_zone.dorwinia-public.id
   name = "dorwinia._domainkey.dorwinia.com"
   type = "TXT"
