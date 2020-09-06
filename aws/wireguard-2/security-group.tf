@@ -27,6 +27,26 @@ resource "aws_security_group" "wireguard-2" {
   }
 
   ingress {
+    description = "Allow incoming Wireguard connections from Dorwinia public ip"
+    from_port = 0
+    to_port = 51820
+    protocol = "TCP"
+    cidr_blocks = [
+      "70.93.179.146/32",
+    ]
+  }
+
+  ingress {
+    description = "Allow incoming Wireguard connections from Dorwinia public ip"
+    from_port = 0
+    to_port = 51820
+    protocol = "UDP"
+    cidr_blocks = [
+      "70.93.179.146/32",
+    ]
+  }
+
+  ingress {
     description = "Allow incoming Wireguard connections"
     from_port = 0
     to_port = 5180
