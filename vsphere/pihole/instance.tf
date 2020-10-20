@@ -2,7 +2,7 @@ module "dns-3" {
   source = "git@git.dorwinia.com:homelab/terraform-homelab.git//vsphere/modules/vsphere-instance?ref=vsphere-instance-v1.0"
 
   hostname = "dns-3"
-  playbook = "dns_config.yml"
+  playbook = "dns.yml"
   ip-address = "192.168.1.13/24"
   gateway = "192.168.1.1"
   dns-servers = "192.168.1.11, 192.168.1.12"
