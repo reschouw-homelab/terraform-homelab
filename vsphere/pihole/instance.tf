@@ -9,5 +9,5 @@ module "dns-3" {
   num-cpus = 2
   memory = 2048
   disk-size = 8
-  template = "ubuntu-18-04-20200709140801"
+  template = "ubuntu-18-04-20200810233459"
 }

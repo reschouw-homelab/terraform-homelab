@@ -9,7 +9,7 @@ module "dhcp-1" {
   num-cpus = 2
   memory = 1024
   disk-size = 8
-  template = "ubuntu-18-04-20200709140801"
+  template = "ubuntu-18-04-20200810233459"
 }
 
 module "dhcp-2" {
@@ -23,5 +23,5 @@ module "dhcp-2" {
   num-cpus = 2
   memory = 1024
   disk-size = 8
-  template = "ubuntu-18-04-20200709140801"
+  template = "ubuntu-18-04-20200810233459"
 }

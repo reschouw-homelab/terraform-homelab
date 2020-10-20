@@ -9,5 +9,5 @@ module "nginx" {
   num-cpus = 2
   memory = 1024
   disk-size = 8
-  template = "ubuntu-18-04-20200709140801"
+  template = "ubuntu-18-04-20200810233459"
 }
