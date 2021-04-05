@@ -1,6 +1,6 @@
-resource "aws_security_group" "wireguard-2" {
+resource "aws_security_group" "tunnel-box" {
   
-  name = "wireguard-2"
+  name = "tunnel-box"
   description = "Allows incoming access form all RFC 1918 addresses"
   vpc_id = data.aws_vpc.us-west-2.id
   
@@ -68,6 +68,6 @@ resource "aws_security_group" "wireguard-2" {
   
   tags = {
     terraform = true
-    Name = "wireguard-2"
+    Name = "tunnel-box"
   }
 }

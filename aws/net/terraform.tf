@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "dorwinia-tf-state"
-    key    = "terraform-homelab/aws/wireguard-2.tfstate"
+    key    = "terraform-homelab/aws/tunnel-box.tfstate"
     region = "us-west-2"
   }
 }
