@@ -33,7 +33,7 @@ variable "disk-size" {
 variable "ami-name" {
   description = "Name of ami to be used as base image. Grabs most recent ami. Supports regex."
   type = string
-  default = "ubuntu-18-04-*"
+  default = "ubuntu-20-04-*"
 }
 
 #
