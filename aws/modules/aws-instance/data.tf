@@ -38,3 +38,7 @@ data "aws_route53_zone" "public" {
 data "aws_route53_zone" "private" {
   zone_id = "Z086744537AWZ24ZBLDOP"
 }
+
+data "aws_secretsmanager_secret_version" "ansible-user-creds" {
+  secret_id = "ansible-user-creds"
+}

@@ -13,7 +13,7 @@ resource "aws_instance" "instance" {
     volume_size = var.disk-size
   }
   
-  user_data = templatefile("${path.module}/userdata.cfg",{hostname = var.hostname, playbook = var.playbook, domain = var.domain})
+  user_data = templatefile("${path.module}/userdata.cfg",{hostname = var.hostname, playbook = var.playbook, domain = var.domain, ansible-key-id = local.ansible-key-id, ansible-key-secret = local.ansible-key-secret})
   tags = {
     terraform = true
     Name = "${var.hostname}.${var.domain}"

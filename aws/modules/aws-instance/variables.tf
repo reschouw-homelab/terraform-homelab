@@ -68,3 +68,7 @@ variable "playbook" {
   default = "common.yml"
 }
 
+locals {
+  ansible-key-id = jsondecode(data.aws_secretsmanager_secret_version.ansible-user-creds.secret_string)["access_key_id"]
+  ansible-key-secret = jsondecode(data.aws_secretsmanager_secret_version.ansible-user-creds.secret_string)["secret_access_key"]
+}
