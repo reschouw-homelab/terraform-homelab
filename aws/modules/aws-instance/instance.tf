@@ -3,7 +3,7 @@ resource "aws_instance" "instance" {
   key_name = "dorwin@config.dorwinia.com"
   instance_type = var.instance-type
   
-  subnet_id = data.aws_subnet.us-west-2a.id
+  subnet_id = data.aws_subnet.subnet.id
   private_ip = var.ip-address
   associate_public_ip_address = var.associate-public-ip
   

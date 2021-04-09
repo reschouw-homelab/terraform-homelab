@@ -45,6 +45,11 @@ variable "ip-address" {
   type = string
 }
 
+variable "subnet" {
+  description = "Destination subnet"
+  type = string
+}
+
 variable "associate-public-ip" {
   description = "Whether or not to associate a public ip address with the instance"
   type = bool
