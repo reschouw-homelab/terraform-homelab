@@ -24,12 +24,6 @@ resource "aws_route_table" "subnets" {
     gateway_id = aws_internet_gateway.igw.id
   }
 
-  # WireGuard VPN to homelab
-  route {
-    cidr_block = "192.168.0.0/16"
-    instance_id = data.aws_instance.wireguard-2.id
-  }
-
   tags = {
     Name = "us-west-2${each.key}"
     terraform = true
