@@ -8,7 +8,6 @@ module "config" {
   subnet = "us-west-2-dmz"
   associate-public-ip = true
   custom-security-group-ids = [aws_security_group.config.id]
-  playbook = "common.yml"
 }
 
 output "public_ips" { 
