@@ -3,11 +3,11 @@ module "config" {
   #source = "/home/dorwin/terraform-homelab/aws/modules/aws-instance"
   
   hostname = "config"
-  ip-address = "10.1.0.254"
-  subnet = "us-west-2a"
+  ami-name = "config.dorwinia.com-2021-05-01"
+  ip-address = "10.1.4.254"
+  subnet = "us-west-2-dmz"
   associate-public-ip = true
   custom-security-group-ids = [aws_security_group.config.id]
-  playbook = "common.yml"
 }
 
 output "public_ips" { 
