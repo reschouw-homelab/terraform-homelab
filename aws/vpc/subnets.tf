@@ -21,13 +21,7 @@ resource "aws_route_table" "subnets" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.igw.id
-  }
-
-  # WireGuard VPN to homelab
-  route {
-    cidr_block = "192.168.0.0/16"
-    instance_id = data.aws_instance.wireguard-2.id
+    instance_id = module.nat.instance-id
   }
 
   tags = {

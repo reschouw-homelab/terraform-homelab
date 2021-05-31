@@ -3,12 +3,12 @@ terraform {
   required_providers {
     aws = {
       source = "hashicorp/aws"
-      version = "3.38.0"
+      version = "3.37.0"
     }
   }
   backend "s3" {
     bucket = "dorwinia-tf-state"
-    key    = "terraform-homelab/aws/config.tfstate"
+    key    = "terraform-homelab/aws/k8s.tfstate"
     region = "us-west-2"
   }
 }

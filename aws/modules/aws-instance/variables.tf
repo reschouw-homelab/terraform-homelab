@@ -63,6 +63,12 @@ variable "custom-security-group-ids" {
   default = []
 }
 
+variable "source-dest-check" {
+  description = "Controls the Source Destination check commonly used when enabling NAT"
+  type = bool
+  default = true
+}
+
 #
 # Ansible auto-run Configuration: -------------------------------------------------------
 #
