@@ -6,6 +6,7 @@ resource "aws_instance" "instance" {
   subnet_id = data.aws_subnet.subnet.id
   private_ip = var.ip-address
   associate_public_ip_address = var.associate-public-ip
+  source_dest_check = var.source-dest-check
   
   vpc_security_group_ids = (length(var.custom-security-group-ids) == 0) ? [data.aws_security_group.dorwinia-default.id] : var.custom-security-group-ids
   
@@ -14,6 +15,14 @@ resource "aws_instance" "instance" {
   }
   
   user_data = templatefile("${path.module}/userdata.cfg",{hostname = var.hostname, playbook = var.playbook, domain = var.domain, ansible-key-id = local.ansible-key-id, ansible-key-secret = local.ansible-key-secret})
+
+  lifecycle {
+    ignore_changes = [
+      user_data,
+      ebs_optimized,
+    ]
+  }
+
   tags = {
     terraform = true
     Name = "${var.hostname}.${var.domain}"
