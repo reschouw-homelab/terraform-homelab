@@ -15,8 +15,14 @@ variable "domain" {
 
 
 #
-# Instance Size Configuration: ----------------------------------------------------------
+# Instance Configuration: ----------------------------------------------------------
 #
+
+variable "spot-instance" {
+  description = "Controls whether the instance is created as spot"
+  type = bool
+  default = true
+}
 
 variable "instance-type" {
   description = "Type of instance to create"
@@ -43,6 +49,7 @@ variable "ami-name" {
 variable "ip-address" {
   description = "Static IP to be applied to server"
   type = string
+  default = ""
 }
 
 variable "subnet" {
