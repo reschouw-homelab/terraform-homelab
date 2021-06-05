@@ -3,7 +3,7 @@ resource "aws_route53_record" "private-dns" {
   name = "${var.hostname}.${var.domain}"
   type = "A"
   ttl = 300
-  records = [aws_instance.instance.private_ip]
+  records = [var.spot-instance ? aws_spot_instance_request.instance[0].private_ip : aws_instance.instance[0].private_ip]
 }
 
 resource "aws_route53_record" "public-dns" {
@@ -12,5 +12,5 @@ resource "aws_route53_record" "public-dns" {
   name = "${var.hostname}.${var.domain}"
   type = "A"
   ttl = 300
-  records = [aws_instance.instance.public_ip]
+  records = [var.spot-instance ? aws_spot_instance_request.instance[0].public_ip : aws_instance.instance[0].public_ip]
 }
