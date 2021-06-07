@@ -39,6 +39,10 @@ data "aws_route53_zone" "private" {
   zone_id = "Z086744537AWZ24ZBLDOP"
 }
 
+data "aws_sns_topic" "slack-alerts" {
+  name = "slack-alerts"
+}
+
 data "aws_secretsmanager_secret_version" "ansible-user-creds" {
   secret_id = "ansible-user-creds"
 }
