@@ -45,7 +45,7 @@ resource "aws_ec2_tag" "terraform" {
 resource "aws_ec2_tag" "spot" {
   count = var.spot-instance ? 1 : 0
   resource_id = aws_spot_instance_request.instance[0].spot_instance_id
-  key = "terraform"
+  key = "spot"
   value = true
 }
 
