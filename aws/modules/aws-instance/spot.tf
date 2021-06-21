@@ -31,7 +31,27 @@ resource "aws_spot_instance_request" "instance" {
 
   tags = {
     terraform = true
-    spot = true
-    Name = "${var.hostname}.${var.domain}"
   }
+}
+
+# Note it would be ideal to use both count and for_each here to conditionally create multiple tags, but they are mutually exclusive
+resource "aws_ec2_tag" "terraform" {
+  count = var.spot-instance ? 1 : 0
+  resource_id = aws_spot_instance_request.instance[0].spot_instance_id
+  key = "terraform"
+  value = true
+}
+
+resource "aws_ec2_tag" "spot" {
+  count = var.spot-instance ? 1 : 0
+  resource_id = aws_spot_instance_request.instance[0].spot_instance_id
+  key = "terraform"
+  value = true
+}
+
+resource "aws_ec2_tag" "key" {
+  count = var.spot-instance ? 1 : 0
+  resource_id = aws_spot_instance_request.instance[0].spot_instance_id
+  key = "Name"
+  value = "${var.hostname}.${var.domain}"
 }
