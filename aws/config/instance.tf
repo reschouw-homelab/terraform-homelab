@@ -4,7 +4,7 @@ module "config" {
   
   hostname = "config"
   ami-name = "config-pre-ebs-expansion"
-  ip-address = "10.1.4.254"
+  instance-type = "t3a.small"
   subnet = "us-west-2-dmz"
   associate-public-ip = true
   custom-security-group-ids = [aws_security_group.config.id]
