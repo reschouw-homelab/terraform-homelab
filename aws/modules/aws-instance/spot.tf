@@ -23,6 +23,7 @@ resource "aws_spot_instance_request" "instance" {
 
   lifecycle {
     ignore_changes = [
+      ami,
       user_data,
       ebs_optimized,
     ]
