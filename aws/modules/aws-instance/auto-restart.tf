@@ -10,7 +10,7 @@ resource "aws_cloudwatch_metric_alarm" "auto-recover" {
   ]
   statistic = "Minimum"
   comparison_operator = "GreaterThanThreshold"
-  threshold = "1"
+  threshold = "0"
   metric_name = "StatusCheckFailed_System"
   dimensions = {
     InstanceId = var.spot-instance ? aws_spot_instance_request.instance[0].spot_instance_id : aws_instance.instance[0].id
