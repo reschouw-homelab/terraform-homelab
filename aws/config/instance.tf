@@ -4,7 +4,7 @@ module "config" {
   
   hostname = "config"
   ami-name = "config-pre-ebs-expansion"
-  instance-type = "t3a.small"
+  instance-type = "t3a.micro"
   disk-size = 12
   subnet = "us-west-2-dmz"
   associate-public-ip = true
