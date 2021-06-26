@@ -1,5 +1,5 @@
 module "nat" {
-  source = "git@github.com:reschouw/terraform-homelab.git//aws/modules/aws-instance?ref=aws-instance-v3.4"
+  source = "git@github.com:reschouw/terraform-homelab.git//aws/modules/aws-instance?ref=aws-instance-v3.5"
   
   hostname = "nat"
   subnet = "us-west-2-dmz"

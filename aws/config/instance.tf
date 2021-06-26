@@ -1,5 +1,5 @@
 module "config" {
-  source = "git@github.com:reschouw/terraform-homelab.git//aws/modules/aws-instance?ref=aws-instance-v3.4"
+  source = "git@github.com:reschouw/terraform-homelab.git//aws/modules/aws-instance?ref=aws-instance-v3.5"
   #source = "/home/dorwin/terraform-homelab/aws/modules/aws-instance"
   
   hostname = "config"
