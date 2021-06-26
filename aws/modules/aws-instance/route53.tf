@@ -12,5 +12,5 @@ resource "aws_route53_record" "public-dns" {
   name = "${var.hostname}.${var.domain}"
   type = "A"
   ttl = 300
-  records = [var.spot-instance ? aws_spot_instance_request.instance[0].public_ip : aws_instance.instance[0].public_ip]
+  records = [aws_eip.instance[0].public_ip]
 }
