@@ -1,10 +1,10 @@
 module "controller" {
-  #source = "git@github.com:reschouw/terraform-homelab.git//aws/modules/aws-instance?ref=aws-instance-v2.2"
-  source = "/home/dorwin/terraform-homelab/aws/modules/aws-instance"
+  source = "git@github.com:reschouw/terraform-homelab.git//aws/modules/aws-instance?ref=aws-instance-v3.5"
+  #source = "/home/dorwin/terraform-homelab/aws/modules/aws-instance"
   
-  hostname = "kube-controller-1"
+  hostname = "kube-con-1"
   subnet = "us-west-2a"
   playbook = "kubernetes.yml"
   
-  instance-type = "t3a.small"
+  instance-type = "t4g.small"
 }
