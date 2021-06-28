@@ -20,7 +20,6 @@ resource "aws_spot_fleet_request" "workers" {
         volume_size = 8
       }
       user_data = templatefile("${path.module}/userdata.cfg",{
-        hostname = "kube-worker",
         k8s-join-token = local.k8s-join-token,
         k8s-join-hash = local.k8s-join-hash,
         kube-controller-ip = module.controller.private-ip,
