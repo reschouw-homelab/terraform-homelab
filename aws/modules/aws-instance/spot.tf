@@ -11,9 +11,11 @@ resource "aws_spot_instance_request" "instance" {
   subnet_id = data.aws_subnet.subnet.id
   private_ip = var.ip-address
   source_dest_check = var.source-dest-check
-  
+
   vpc_security_group_ids = (length(var.custom-security-group-ids) == 0) ? [data.aws_security_group.dorwinia-default.id] : var.custom-security-group-ids
   
+  iam_instance_profile = var.instance-profile
+
   root_block_device {
     volume_size = var.disk-size
   }

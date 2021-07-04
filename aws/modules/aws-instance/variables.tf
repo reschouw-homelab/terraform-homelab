@@ -76,6 +76,12 @@ variable "source-dest-check" {
   default = true
 }
 
+variable "instance-profile" {
+  description = "Instance profile to apply"
+  type = string
+  default = ""
+}
+
 #
 # Ansible auto-run Configuration: -------------------------------------------------------
 #
