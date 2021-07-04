@@ -14,8 +14,13 @@ data "aws_ami" "k8s-worker" {
   }
 }
 
+data "aws_secretsmanager_secret" "k8s-join" {
+  name = "k8s-join-token"
+}
+
 data "aws_secretsmanager_secret_version" "k8s-join" {
   secret_id = "k8s-join-token"
+  depends_on = [module.controller]
 }
 
 data "aws_vpc" "prod" {

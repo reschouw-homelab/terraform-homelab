@@ -5,6 +5,7 @@ module "controller" {
   hostname = "kube-con-1"
   subnet = "us-west-2a"
   playbook = "kubernetes.yml"
+  instance-profile = aws_iam_instance_profile.k8s-controller.name
   
   instance-type = "t4g.small"
 }
