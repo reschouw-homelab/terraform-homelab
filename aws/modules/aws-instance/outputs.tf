@@ -4,7 +4,7 @@ output "public-ip" {
 }
 
 output "private-ip" {
-  description = "The public IP address of the created instance"
+  description = "The private IP address of the created instance"
   value = var.spot-instance ? aws_spot_instance_request.instance[0].private_ip : aws_instance.instance[0].private_ip
 }
 
