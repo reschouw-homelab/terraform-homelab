@@ -15,7 +15,4 @@ resource "aws_cloudwatch_metric_alarm" "auto-recover" {
   dimensions = {
     InstanceId = var.spot-instance ? aws_spot_instance_request.instance[0].spot_instance_id : aws_instance.instance[0].id
   }
-  tags = {
-    terraform = true
-  }
 }

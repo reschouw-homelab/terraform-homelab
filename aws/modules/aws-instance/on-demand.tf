@@ -28,7 +28,6 @@ resource "aws_instance" "instance" {
   }
 
   tags = {
-    terraform = true
     Name = "${var.hostname}.${var.domain}"
   }
 }

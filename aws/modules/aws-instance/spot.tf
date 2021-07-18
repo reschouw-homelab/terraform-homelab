@@ -29,10 +29,6 @@ resource "aws_spot_instance_request" "instance" {
       ebs_optimized,
     ]
   }
-
-  tags = {
-    terraform = true
-  }
 }
 
 # Note it would be ideal to use both count and for_each here to conditionally create multiple tags, but they are mutually exclusive
