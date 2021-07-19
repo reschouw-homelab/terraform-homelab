@@ -2,7 +2,7 @@ resource "aws_spot_instance_request" "instance" {
   count = var.spot-instance ? 1 : 0
 
   wait_for_fulfillment = true
-  instance_interruption_behaviour = "stop"
+  instance_interruption_behavior = "stop"
 
   ami = data.aws_ami.instance-ami.id
   key_name = "dorwin@config.dorwinia.com"
