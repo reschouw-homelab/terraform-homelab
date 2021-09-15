@@ -7,6 +7,9 @@ module "lb-1" {
 
   hostname = "lb-1"
   subnet = "us-west-2-dmz"
+  custom-security-group-ids = [
+    aws_security_group.lb.id
+  ]
 
   playbook = "nginx.yml"
 }
