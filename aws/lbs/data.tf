@@ -3,3 +3,8 @@ data "aws_vpc" "main" {
     Name = "us-west-2"
   }
 }
+
+data "aws_route53_zone" "public" {
+  name = "dorwinia.com"
+  private_zone = false
+}
