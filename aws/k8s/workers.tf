@@ -16,6 +16,7 @@ resource "aws_spot_fleet_request" "workers" {
       instance_type = "t4g.small"
       subnet_id = each.value.id
       vpc_security_group_ids = [aws_security_group.kube-worker.id]
+      associate_public_ip_address = false
 			iam_instance_profile = aws_iam_instance_profile.worker-bootstrap.name 
       root_block_device {
         volume_size = 8
