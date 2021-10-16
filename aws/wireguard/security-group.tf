@@ -1,6 +1,6 @@
-resource "aws_security_group" "tunnel-box" {
+resource "aws_security_group" "wireguard" {
   
-  name = "tunnel-box"
+  name = "wireguard"
   description = "Allows incoming access form all RFC 1918 addresses"
   vpc_id = data.aws_vpc.us-west-2.id
   
@@ -17,42 +17,22 @@ resource "aws_security_group" "tunnel-box" {
   }
 
   ingress {
-    description = "Allow incoming SSH connections from Dorwinia public ip"
-    from_port = 0
-    to_port = 22
-    protocol = "TCP"
-    cidr_blocks = [
-      "70.93.179.146/32",
-    ]
-  }
-
-  ingress {
-    description = "Allow incoming Wireguard connections from Dorwinia public ip"
-    from_port = 0
+    description = "Allow incoming Wireguard connections"
+    from_port = 51820
     to_port = 51820
     protocol = "TCP"
     cidr_blocks = [
-      "70.93.179.146/32",
-    ]
-  }
-
-  ingress {
-    description = "Allow incoming Wireguard connections from Dorwinia public ip"
-    from_port = 0
-    to_port = 51820
-    protocol = "UDP"
-    cidr_blocks = [
-      "70.93.179.146/32",
+      "0.0.0.0/0",
     ]
   }
 
   ingress {
     description = "Allow incoming Wireguard connections"
-    from_port = 0
-    to_port = 5180
+    from_port = 51820
+    to_port = 51820
     protocol = "UDP"
     cidr_blocks = [
-      "70.93.179.146/32",
+      "0.0.0.0/0",
     ]
   }
 
