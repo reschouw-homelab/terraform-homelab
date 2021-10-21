@@ -16,15 +16,15 @@ resource "aws_security_group" "unifi" {
     ]
   }
 
-  #ingress {
-  #  description = "Allow incoming Unifi Management connections"
-  #  from_port = 
-  #  to_port = 
-  #  protocol = ""
-  #  cidr_blocks = [
-  #    "",
-  #  ]
-  #}
+  ingress {
+    description = "Allow connections from Parents"
+    from_port = 0
+    to_port = 0
+    protocol = "-1"
+    cidr_blocks = [
+      "66.205.138.41/32",
+    ]
+  }
 
   egress {
     description = "Allow all outgoing connections"
