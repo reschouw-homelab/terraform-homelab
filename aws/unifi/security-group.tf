@@ -17,12 +17,13 @@ resource "aws_security_group" "unifi" {
   }
 
   ingress {
-    description = "Allow connections from Parents"
+    description = "Allow connections from Homes"
     from_port = 0
     to_port = 0
     protocol = "-1"
     cidr_blocks = [
-      "66.205.138.41/32",
+      "66.205.138.41/32", # Parents
+      "24.17.190.133/32", # Home
     ]
   }
 
