@@ -7,3 +7,10 @@ data "aws_vpc" "us-west-2" {
     Name = "us-west-2"
   }
 }
+
+data "aws_instance" "netbox" {
+  filter {
+    name   = "tag:Name"
+    values = ["netbox.dorwinia.com"]
+  }
+}

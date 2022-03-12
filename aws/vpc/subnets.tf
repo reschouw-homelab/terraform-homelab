@@ -21,7 +21,7 @@ resource "aws_route_table" "subnets" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    instance_id = module.nat.instance-id
+    instance_id = data.aws_instance.netbox.id
   }
 
   tags = {
