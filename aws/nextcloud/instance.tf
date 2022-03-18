@@ -3,10 +3,12 @@ module "nextcloud" {
   #source = "/home/dorwin/terraform-homelab/aws/modules/aws-instance"
   
   spot-instance = true
-  instance-type = "t4g.micro"
+  instance-type = "t4g.small"
+  ami-name = "nextcloud-resizing"
 
   hostname = "nextcloud"
   subnet = "us-west-2c"
+  disk-size = 16
 
   playbook = "common.yml"
 }
