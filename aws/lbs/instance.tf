@@ -11,6 +11,6 @@ module "lb-1" {
     aws_security_group.lb.id
   ]
 
-  playbook = "nginx.yml"
+  playbook = "lb.yml"
 }
 
