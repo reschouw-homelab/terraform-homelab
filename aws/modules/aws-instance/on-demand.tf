@@ -24,6 +24,7 @@ resource "aws_instance" "instance" {
       ami,
       user_data,
       ebs_optimized,
+      user_data_replace_on_change,
     ]
   }
 

@@ -49,7 +49,7 @@ variable "ami-name" {
 variable "ip-address" {
   description = "Static IP to be applied to server"
   type = string
-  default = ""
+  default = null
 }
 
 variable "subnet" {

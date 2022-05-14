@@ -27,6 +27,7 @@ resource "aws_spot_instance_request" "instance" {
       ami,
       user_data,
       ebs_optimized,
+      user_data_replace_on_change,
     ]
   }
 }
