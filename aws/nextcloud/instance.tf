@@ -1,5 +1,5 @@
 module "nextcloud" {
-  source = "git@github.com:reschouw/terraform-homelab.git//aws/modules/aws-instance?ref=aws-instance-v3.9"
+  source = "git@github.com:reschouw/terraform-homelab.git//aws/modules/aws-instance?ref=aws-instance-v3.10"
   #source = "/home/dorwin/terraform-homelab/aws/modules/aws-instance"
   
   spot-instance = true
