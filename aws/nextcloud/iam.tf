@@ -1,3 +1,48 @@
+# nextcloud user policy: ------------------------------------------------------
+
+resource "aws_iam_user_policy_attachment" "nextcloud" {
+  user       = data.aws_iam_user.nextcloud.user_name
+  policy_arn = aws_iam_policy.nextcloud-user.arn
+}
+
+resource "aws_iam_policy" "nextcloud-user" {
+  name = "nextcloud-s3-permisisons"
+  policy = data.aws_iam_policy_document.nextcloud-user.json
+}
+
+data "aws_iam_policy_document" "nextcloud-user" {
+  statement {
+    sid = "nextcloudUserObjectPerms"
+    actions = ["s3:*"]
+    resources = [
+      "${aws_s3_bucket.nextcloud.arn}",
+      "${aws_s3_bucket.nextcloud.arn}/*",
+    ]
+  }
+  statement {
+    sid = "nextcloudUserBucketPerms"
+    actions = [
+      "s3:GetBucketLocation",
+      "s3:ListAllMyBuckets"
+    ]
+    resources = [
+      "arn:aws:s3:::*"
+    ]
+  }
+  statement {
+    sid = "nextcloudKms"
+    actions = [
+      "kms:Decrypt",
+      "kms:Eecrypt",
+      "kms:GenerateDataKey"
+    ]
+    resources = ["${aws_kms_key.nextcloud.arn}"]
+    effect = "Allow"
+  }
+}
+
+# replication IAM configuration: ----------------------------------------------
+
 resource "aws_iam_role" "nextcloud-replication" {
   name = "nextcloud-replication"
   assume_role_policy = data.aws_iam_policy_document.nextcloud-replication-assume.json

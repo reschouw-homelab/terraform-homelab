@@ -23,3 +23,7 @@ data "aws_instance" "lb" {
     Name = "lb-1.dorwinia.com"
   }
 }
+
+data "aws_iam_user" "nextcloud" {
+  user_name = "nextcloud"
+}
