@@ -65,3 +65,32 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "nextcloud" {
     bucket_key_enabled = true
   }
 }
+
+# Bucket Replication: ---------------------------------------------------------
+
+resource "aws_s3_bucket_replication_configuration" "nextcloud-replication" {
+  depends_on = [aws_s3_bucket_versioning.nextcloud]
+
+  role   = aws_iam_role.nextcloud-replication.arn
+  bucket = aws_s3_bucket.nextcloud.id
+
+  rule {
+    id = "replicate-nextcloud"
+
+    status = "Enabled"
+
+    destination {
+      bucket        = "arn:aws:s3:::dorwinia-nextcloud-replica"
+      storage_class = "ONEZONE_IA"
+      encryption_configuration {
+        replica_kms_key_id = "arn:aws:kms:us-east-2:841800532843:alias/aws/s3"
+      }
+    }
+    
+    source_selection_criteria {
+      sse_kms_encrypted_objects {
+        status = "Enabled"
+      }
+    }
+  }
+}
