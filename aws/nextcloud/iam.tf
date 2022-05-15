@@ -52,10 +52,32 @@ data "aws_iam_policy_document" "nextcloud-replication" {
     actions = [
       "s3:ReplicateObject",
       "s3:ReplicateDelete",
-      "s3:ReplicateTags"
+      "s3:ReplicateTags",
+      #"s3:GetObjectVersionTagging"
     ]
-    resources = ["arn:aws:s3:::dorwinia-nextcloud-replica"]
+    resources = ["arn:aws:s3:::dorwinia-nextcloud-replica/*"]
     effect = "Allow"
   }
+
+  statement {
+    sid = "sourceKmsKey"
+    actions = [
+      "kms:Decrypt",
+      "kms:GenerateDataKey"
+    ]
+    resources = ["${aws_kms_key.nextcloud.arn}"]
+    effect = "Allow"
+  }
+
+  statement {
+    sid = "destinationKmsKey"
+    actions = [
+      "kms:Eecrypt",
+      "kms:GenerateDataKey"
+    ]
+    resources = ["arn:aws:kms:us-east-2:841800532843:alias/aws/s3"]
+    effect = "Allow"
+  }
+
 }
 
