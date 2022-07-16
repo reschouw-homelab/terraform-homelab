@@ -6,7 +6,5 @@ module "module-test" {
 
   hostname = "module-test"
   subnet = "us-west-2a"
-
-  playbook = "common.yml"
 }
 

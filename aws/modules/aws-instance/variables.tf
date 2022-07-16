@@ -89,12 +89,23 @@ variable "instance-profile" {
 # Ansible auto-run Configuration: -------------------------------------------------------
 #
 
-variable "playbook" {
+variable "ansible-playbook" {
   description = "Name of the Ansible playbook to be run against the machine on first boot (don't forget the .yml)"
   type = string
   default = "common.yml"
 }
 
+variable "ansible-branch" {
+  description = "Name of the ansible branch to use for ansible auto-runs"
+  type = string
+  default = "master"
+}
+
+variable "ansible-groups" {
+  description = "List of groups to add the instance to"
+  type = list
+  default = ["all"]
+}
 locals {
   ansible-key-id = jsondecode(data.aws_secretsmanager_secret_version.ansible-user-creds.secret_string)["access_key_id"]
   ansible-key-secret = jsondecode(data.aws_secretsmanager_secret_version.ansible-user-creds.secret_string)["secret_access_key"]

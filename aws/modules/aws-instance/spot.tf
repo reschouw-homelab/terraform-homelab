@@ -20,7 +20,18 @@ resource "aws_spot_instance_request" "instance" {
     volume_size = var.disk-size
   }
   
-  user_data = templatefile("${path.module}/userdata.cfg",{hostname = var.hostname, playbook = var.playbook, domain = var.domain, ansible-key-id = local.ansible-key-id, ansible-key-secret = local.ansible-key-secret})
+  user_data = templatefile(
+    "${path.module}/userdata.cfg",
+    {
+      hostname = var.hostname,
+      domain = var.domain,
+      ansible-playbook = var.ansible-playbook,
+      ansible-branch = var.ansible-branch,
+      ansible-groups = var.ansible-groups,
+      ansible-key-id = local.ansible-key-id,
+      ansible-key-secret = local.ansible-key-secret
+    }
+  )
 
   maintenance_options {
     auto_recovery = "default"
