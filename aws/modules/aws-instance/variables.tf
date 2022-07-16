@@ -1,5 +1,5 @@
 #
-# Hostname Configuration: --------------------------------------------------------
+# Required Variables: ------------------------------------------------------------
 #
 
 variable "hostname" {
@@ -7,12 +7,20 @@ variable "hostname" {
   type = string
 }
 
+variable "subnet" {
+  description = "Destination subnet"
+  type = string
+}
+
+#
+# Hostname Configuration: --------------------------------------------------------
+#
+
 variable "domain" {
   description = "Domain of the instance. Combined with Hostname to form FQDN"
   type = string
   default = "dorwinia.com"
 }
-
 
 #
 # Instance Configuration: ----------------------------------------------------------
@@ -50,11 +58,6 @@ variable "ip-address" {
   description = "Static IP to be applied to server"
   type = string
   default = null
-}
-
-variable "subnet" {
-  description = "Destination subnet"
-  type = string
 }
 
 variable "associate-public-ip" {
