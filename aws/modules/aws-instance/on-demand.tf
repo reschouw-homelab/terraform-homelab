@@ -19,6 +19,10 @@ resource "aws_instance" "instance" {
   
   user_data = templatefile("${path.module}/userdata.cfg",{hostname = var.hostname, playbook = var.playbook, domain = var.domain, ansible-key-id = local.ansible-key-id, ansible-key-secret = local.ansible-key-secret})
 
+  maintenance_options {
+    auto_recovery = "default"
+  }
+
   lifecycle {
     ignore_changes = [
       ami,
