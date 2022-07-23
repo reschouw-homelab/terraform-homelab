@@ -1,9 +1,9 @@
 module "lb-1" {
-  source = "git@github.com:reschouw/terraform-homelab.git//aws/modules/aws-instance?ref=aws-instance-v3.9"
-  #source = "/home/dorwin/terraform-homelab/aws/modules/aws-instance"
+  source = "git@github.com:reschouw/terraform-homelab.git//aws/modules/aws-instance?ref=aws-instance-v4.0.0"
   
   spot-instance = true
-  associate-public-ip = true
+  associate-public-ip-address = true
+  associate-elastic-ip-address = true
 
   hostname = "lb-1"
   subnet = "us-west-2-dmz"
@@ -11,6 +11,6 @@ module "lb-1" {
     aws_security_group.lb.id
   ]
 
-  playbook = "lb.yml"
+  ansible-playbook = "lb.yml"
 }
 
