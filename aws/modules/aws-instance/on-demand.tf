@@ -7,6 +7,7 @@ resource "aws_instance" "instance" {
   
   subnet_id = data.aws_subnet.subnet.id
   private_ip = var.ip-address
+  associate_public_ip_address = (var.associate-public-ip-address || var.associate-elastic-ip-address)
   source_dest_check = var.source-dest-check
 
   vpc_security_group_ids = (length(var.custom-security-group-ids) == 0) ? [data.aws_security_group.dorwinia-default.id] : var.custom-security-group-ids
@@ -17,7 +18,22 @@ resource "aws_instance" "instance" {
     volume_size = var.disk-size
   }
   
-  user_data = templatefile("${path.module}/userdata.cfg",{hostname = var.hostname, playbook = var.playbook, domain = var.domain, ansible-key-id = local.ansible-key-id, ansible-key-secret = local.ansible-key-secret})
+  user_data = templatefile(
+    "${path.module}/userdata.cfg",
+    {
+      hostname = var.hostname,
+      domain = var.domain,
+      ansible-playbook = var.ansible-playbook,
+      ansible-branch = var.ansible-branch,
+      ansible-groups = var.ansible-groups,
+      ansible-key-id = local.ansible-key-id,
+      ansible-key-secret = local.ansible-key-secret
+    }
+  )
+
+  maintenance_options {
+    auto_recovery = "default"
+  }
 
   lifecycle {
     ignore_changes = [

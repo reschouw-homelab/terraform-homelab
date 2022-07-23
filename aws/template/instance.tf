@@ -6,7 +6,7 @@ module "module-test" {
 
   hostname = "module-test"
   subnet = "us-west-2a"
-
-  playbook = "common.yml"
+  associate-public-ip-address = true
+  associate-elastic-ip-address = true
 }
 
