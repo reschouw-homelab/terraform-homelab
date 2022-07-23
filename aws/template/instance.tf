@@ -6,5 +6,7 @@ module "module-test" {
 
   hostname = "module-test"
   subnet = "us-west-2a"
+  associate-public-ip-address = true
+  associate-elastic-ip-address = true
 }
 

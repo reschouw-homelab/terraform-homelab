@@ -60,11 +60,22 @@ variable "ip-address" {
   default = null
 }
 
-variable "associate-public-ip" {
+variable "associate-public-ip-address" {
+  # Use with caution
+  # This specifies that a public ip should be associated with the instance, but elastic-ip determines the type of public ip used.
   description = "Whether or not to associate a public ip address with the instance"
   type = bool
   default = false
 }
+
+variable "associate-elastic-ip-address" {
+  # Use with caution
+  # This determines whether or not to use an elastic ip. No effect without associate_public_ip_address=true
+  description = "Whether or not to use an elastic ip instead of a basic public ip"
+  type = bool
+  default = false
+}
+
 
 variable "custom-security-group-ids" {
   description = "List of custom security groups to be added to the instance."
