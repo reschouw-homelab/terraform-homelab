@@ -1,15 +1,3 @@
-# Base website --------------------------------------------
-resource "aws_route53_record" "root-website" {
-  zone_id = aws_route53_zone.dorwinia-public.id
-  name = "dorwinia.com"
-  type = "A"
-  ttl = var.ttl
-
-  records = [
-    var.home-ip
-  ]
-}
-
 # Publicly reachable sites: --------------------------------
 resource "aws_route53_record" "public-sites" {
   for_each = var.public-sites

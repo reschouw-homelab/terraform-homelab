@@ -11,8 +11,5 @@ variable "ttl" {
 variable "public-sites" {
   description = "Map of public sites and their ips"
   default = {
-    gitlab = "70.93.179.146"
-    test = "70.93.179.146"
-    wiki = "70.93.179.146"
   }
 }
