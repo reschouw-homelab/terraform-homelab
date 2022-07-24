@@ -1,8 +1,9 @@
 terraform {
-  required_version = "~> 1.0.0"
+  required_version = "~> 1.2.0"
   required_providers {
     aws = {
       source = "hashicorp/aws"
+      version = "~> 4.22.0"
     }
   }
   backend "s3" {
@@ -13,5 +14,10 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-west-2"
+  region  = "us-west-2"
+  default_tags {
+    tags = {
+      terraform = true
+    }
+  }
 }
