@@ -8,7 +8,7 @@ module "nextcloud" {
 
   hostname = "nextcloud"
   subnet = "us-west-2c"
-  disk-size = 16
+  disk-size = 32
 
   playbook = "common.yml"
 }
