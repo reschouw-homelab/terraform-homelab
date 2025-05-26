@@ -5,6 +5,7 @@
 # Terraform files
 .terraform/*
 .terraform
+.terraform.lock.hcl
 
 # Terraform Crash Logs
 crash.log
