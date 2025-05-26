@@ -7,7 +7,7 @@ module "config" {
   instance-type = "t4g.micro"
   disk-size = 12
   subnet = "us-west-2-dmz"
-  associate-public-ip = true
+  associate-public-ip = false
   custom-security-group-ids = [aws_security_group.config.id]
 }
 
