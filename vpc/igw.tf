@@ -1,5 +1,5 @@
-resource "aws_internet_gateway" "igw" {
-  vpc_id = data.aws_vpc.us-west-2.id
+resource "aws_internet_gateway" "main" {
+  vpc_id = aws_vpc.main.id
 
   tags = {
     Name = "us-west-2"
