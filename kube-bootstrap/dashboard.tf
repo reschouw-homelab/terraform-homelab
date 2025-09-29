@@ -8,15 +8,17 @@ resource "helm_release" "kubernetes_dashboard" {
 }
 
 # resource "kubernetes_manifest" "dashboard_ingress" {
-#     manifest = manifest_decode(file("dashboard-ingress.yaml"))
+#     manifest = manifest_decode(file("dashboard/ingress.yaml"))
 # }
 
 resource "kubernetes_manifest" "dashboard_user" {
     manifest = provider::kubernetes::manifest_decode(file("dashboard/user.yml"))
-    depends_on = [ helm_release.kubernetes_dashboard ]
 }
 
 resource "kubernetes_manifest" "dashboard_role" {
     manifest = provider::kubernetes::manifest_decode(file("dashboard/role.yml"))
-    depends_on = [ kubernetes_manifest.dashboard_user ]
+}
+
+resource "kubernetes_manifest" "dashboard_service" {
+    manifest = provider::kubernetes::manifest_decode(file("dashboard/service.yml"))
 }
