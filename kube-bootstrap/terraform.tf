@@ -5,6 +5,10 @@ terraform {
       source = "hashicorp/kubernetes"
       version = " ~> 2.38.0"
     }
+    helm = {
+      source = "hashicorp/helm"
+      version = "3.0.2"
+    }
   }
 
 backend "s3" {
@@ -15,8 +19,11 @@ backend "s3" {
 }
 
 provider "kubernetes" {
-  client_certificate     = file("~/.kube/client_certificate")
-  client_key             = file("~/.kube/client_key")
-  cluster_ca_certificate = file("~/.kube/cluster_ca_certificate")
-  host                   = file("~/.kube/host")
+  config_path = "~/.kube/config"
+}
+
+provider "helm" {
+  kubernetes = {
+    config_path = "~/.kube/config"
+  }
 }
