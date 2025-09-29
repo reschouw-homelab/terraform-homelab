@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: dashboard-nodeport
+  name: kubernetes-dashboard-nodeport
   namespace: kubernetes-dashboard
 spec:
   type: NodePort
